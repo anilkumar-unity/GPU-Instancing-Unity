@@ -32,6 +32,8 @@ public class GPUInstancer : MonoBehaviour
     [Tooltip("Enable random rotation for instances")]
     public bool randomRotation = true;
 
+    private const int MAX_INSTANCES_PER_BATCH = 1023;
+    
     private List<Matrix4x4> matrices = new List<Matrix4x4>();
     private MaterialPropertyBlock propertyBlock;
     private Vector4[] colors;
@@ -93,10 +95,9 @@ public class GPUInstancer : MonoBehaviour
             return;
         
         // Draw instances in batches (max 1023 per batch due to Unity limitation)
-        int batchSize = 1023;
-        for (int i = 0; i < matrices.Count; i += batchSize)
+        for (int i = 0; i < matrices.Count; i += MAX_INSTANCES_PER_BATCH)
         {
-            int count = Mathf.Min(batchSize, matrices.Count - i);
+            int count = Mathf.Min(MAX_INSTANCES_PER_BATCH, matrices.Count - i);
             List<Matrix4x4> batch = matrices.GetRange(i, count);
             
             // Set color property for variation (optional)

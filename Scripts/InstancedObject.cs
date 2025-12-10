@@ -106,11 +106,7 @@ public class InstancedObject : MonoBehaviour
     /// </summary>
     public void SetCustomProperty(string propertyName, float value)
     {
-        if (propertyBlock == null)
-        {
-            propertyBlock = new MaterialPropertyBlock();
-        }
-        
+        EnsurePropertyBlockExists();
         propertyBlock.SetFloat(propertyName, value);
         
         if (meshRenderer != null)
@@ -124,16 +120,23 @@ public class InstancedObject : MonoBehaviour
     /// </summary>
     public void SetCustomColorProperty(string propertyName, Color value)
     {
-        if (propertyBlock == null)
-        {
-            propertyBlock = new MaterialPropertyBlock();
-        }
-        
+        EnsurePropertyBlockExists();
         propertyBlock.SetColor(propertyName, value);
         
         if (meshRenderer != null)
         {
             meshRenderer.SetPropertyBlock(propertyBlock);
+        }
+    }
+    
+    /// <summary>
+    /// Ensure MaterialPropertyBlock is initialized
+    /// </summary>
+    private void EnsurePropertyBlockExists()
+    {
+        if (propertyBlock == null)
+        {
+            propertyBlock = new MaterialPropertyBlock();
         }
     }
     
