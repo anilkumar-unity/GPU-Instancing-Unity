@@ -108,11 +108,7 @@ public class InstancedObject : MonoBehaviour
     {
         EnsurePropertyBlockExists();
         propertyBlock.SetFloat(propertyName, value);
-        
-        if (meshRenderer != null)
-        {
-            meshRenderer.SetPropertyBlock(propertyBlock);
-        }
+        ApplyPropertyBlock();
     }
     
     /// <summary>
@@ -122,11 +118,7 @@ public class InstancedObject : MonoBehaviour
     {
         EnsurePropertyBlockExists();
         propertyBlock.SetColor(propertyName, value);
-        
-        if (meshRenderer != null)
-        {
-            meshRenderer.SetPropertyBlock(propertyBlock);
-        }
+        ApplyPropertyBlock();
     }
     
     /// <summary>
@@ -137,6 +129,17 @@ public class InstancedObject : MonoBehaviour
         if (propertyBlock == null)
         {
             propertyBlock = new MaterialPropertyBlock();
+        }
+    }
+    
+    /// <summary>
+    /// Apply the MaterialPropertyBlock to the mesh renderer
+    /// </summary>
+    private void ApplyPropertyBlock()
+    {
+        if (meshRenderer != null && propertyBlock != null)
+        {
+            meshRenderer.SetPropertyBlock(propertyBlock);
         }
     }
     
