@@ -8,7 +8,7 @@ GPUInstancedObject.cs
 
 GPUInstancingManager.cs
 
-✅ What This System Does
+<h1>What This System Does</h1>
 
 Automatically groups objects by:
 
@@ -28,7 +28,7 @@ Dynamically updates when objects move
 
 Supports multi-material meshes
 
-📂 Files Overview
+<h1>Files Overview</h1>
 1️⃣ GPUInstancedObject.cs
 
 Attach this to any GameObject with a MeshRenderer + MeshFilter.
@@ -69,8 +69,8 @@ Batch size limit:
 
 const int BATCH_SIZE = 1023;
 
-🛠️ How To Use
-✅ Step 1: Add the Manager
+<h1>🛠️ How To Use</h1>
+<b>Step 1:</b> Add the Manager
 
 Create an empty GameObject in your scene and attach:
 
@@ -79,7 +79,7 @@ GPUInstancingManager
 
 This creates the singleton instance at runtime.
 
-✅ Step 2: Add Instanced Objects
+<b>Step 2:</b> Add Instanced Objects
 
 On any mesh you want to be instanced, add:
 
@@ -93,9 +93,9 @@ The normal MeshRenderer will be disabled
 
 The object will be drawn through GPU instancing instead
 
-⚠️ Important Notes
+<h1>Important Notes</h1>
 
-✅ Material must support instancing
+<b>Material must support instancing</b>
 
 The script automatically enables:
 
@@ -147,7 +147,3 @@ Unity 2019+
 Built-in Render Pipeline
 
 Also works in URP & HDRP if materials support instancing
-
-👨‍💻 Author
-
-Created as a minimal, production-ready GPU instancing solution for runtime batching without any editor tools or scene dependencies.
